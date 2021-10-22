@@ -1,13 +1,11 @@
-// import express from 'express'
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
-mongoose.connect('mongodb://127.0.0.1:27017/user', (err, db) => {
-    assert.equal(null, err)
-    console.log('connect successfully to server');
+mongoose.connect('mongodb://127.0.0.1:27017/user', () => {
+    console.log('ok!!!')
 });
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
