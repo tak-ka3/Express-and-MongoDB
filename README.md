@@ -27,4 +27,8 @@ npm install nodemon --save-dev
   "dev": "nodemon index.js"
 }
 ```
+- "type"はcommonjsだとimportを標準として、moduleだとrequireを標準としている。
 - 上に関して補足で、例外的に`npm start`, `npm test`, `npm restart`, `npm stop`は`npm run xxx`と同じ意味。つまり`run`をつける必要がないもの。
+
+### エラー
+- `[nodemon] app crashed - waiting for file changes before starting...`
