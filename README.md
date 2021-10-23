@@ -61,5 +61,6 @@ npm install nodemon --save-dev
 - `nodeman`使っているのに変更がすぐに反映されない。
 
 ### 参照
-- [github](https://github.com/webdevjourneyWDJ/Docker_Projects)
-- [qiita](https://qiita.com/k-penguin-sato/items/5d0db0116843396946bd)
+- [docker github](https://github.com/webdevjourneyWDJ/Docker_Projects)
+- [souce cord qiita](https://qiita.com/k-penguin-sato/items/5d0db0116843396946bd)
+- [curlの操作](https://qiita.com/takuyanin/items/949201e3eb100d4384e1)

@@ -24,7 +24,7 @@ exports.create_task = (req, res) => {
 }
 
 // 特定のタスクを取得する。
-exports.load_task = function(req, res) {
+exports.load_task = (req, res) => {
   Task.findById(req.params.taskId,(err, task) => {
     if (err) res.send(err);
     res.json(task);
@@ -32,7 +32,7 @@ exports.load_task = function(req, res) {
 };
 
 // 特定のタスクを更新する。
-exports.update_task = function(req, res) {
+exports.update_task = (req, res) => {
   Task.findOneAndUpdate(
     { _id: req.params.taskId },
     req.body,
@@ -45,12 +45,12 @@ exports.update_task = function(req, res) {
 };
 
 // 特定のタスクを削除する。
-exports.delete_task = function(req, res) {
+exports.delete_task = (req, res) => {
   Task.remove(
     {
       _id: req.params.taskId
     },
-    function(err, task) {
+    (err, task) => {
       if (err) res.send(err);
       res.json({ message: "Task successfully deleted" });
     }
