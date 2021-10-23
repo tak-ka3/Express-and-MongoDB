@@ -10,9 +10,8 @@ services:
       - mongo
   mongo:
     container_name: mongo-backend
+    restart: always
     image: mongo
-    expose:
-      - "27017"
     ports:
       - "27017:27017"
     volumes:

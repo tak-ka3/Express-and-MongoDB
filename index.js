@@ -1,67 +1,66 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const User = require('./models/user');
+let express = require("express")
+let app = express()
+let port = process.env.PORT || 8888
+let mongoose = require("mongoose")
+let Task = require("./api/models/taskModel") // 作成したModelの読み込み
 
-mongoose.connect('mongodb://127.0.0.1:27017/user', () => {
-    console.log('ok!!!')
-});
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://mongo:27017/Tododb")
+    .then(() => console.log("connect successfully"))
+    .catch((error) => console.log(error))
 
-app.get('/', (req, res) => {
-  res.send('good')
-  console.log('hello')
-})
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.post('/api/v1/create-user', (req, res) =>{
-  if (!req.body){
-      return res.status(500).send('reqest body empty.');
-  }
+let routes = require("./api/routes/taskRoutes"); // Routeのインポート
+routes(app); //appにRouteを設定する。
 
-  const instance = new User();
-  instance.name = req.body.name;
-  instance.age = req.body.age;
-  // MongoDBに保存
-  instance.save((err) => {
-      if(!err) {
-          return res.status(200).send('user create success.');
-      } else {
-          return res.status(500).send('user create faild.');
-      }
-  });
-});
+app.listen(port); // appを特定のportでlistenさせる。
 
-app.get('/api/v1/get-all-user', (req, res) =>{
-  User.find((err, result) => {
-      if(!err) {
-          return res.json(result);
-      } else {
-          return res.status(500).send('get all user faild.');
-      }
-  });
-});
+console.log("todo list RESTful API server started on: " + port);
+// const express = require('express');
+// const app = express();
+// const bodyParser = require('body-parser');
+// const mongoose = require('mongoose');
+// const User = require('./models/user');
 
-app.listen(8888, () => console.log('Listening on port 8888'));
+// mongoose.connect('mongodb://127.0.0.1:27017/user', () => {
+//     console.log('ok!!!')
+// });
+// app.use(bodyParser.urlencoded({extended:false}));
+// app.use(bodyParser.json());
 
-// const express = require("express")
-// const mongoose = require("mongoose")
-
-// const app = express()
-
-// mongoose.connect('mongodb://localhost:27017/test_db', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
-// mongoose.Promise = global.Promise
-
-// app.get("/", (req, res) => {
-//   res.send("<h2>Hi There</h2>");
+// app.get('/', (req, res) => {
+//   res.send('good')
+//   console.log('hello')
 // })
 
-// // このportはコンテナ側のポートっぽい
-// const port =  process.env.PORT || 3000
+// app.post('/api/v1/create-user', (req, res) =>{
+//   if (!req.body){
+//       return res.status(500).send('reqest body empty.');
+//   }
 
-// app.listen(port, () => console.log(`listening on port ${port}`))
+//   const instance = new User();
+//   instance.name = req.body.name;
+//   instance.age = req.body.age;
+//   // MongoDBに保存
+//   instance.save((err) => {
+//       if(!err) {
+//           return res.status(200).send('user create success.');
+//       } else {
+//           return res.status(500).send('user create faild.');
+//       }
+//   });
+// });
 
+// app.get('/api/v1/get-all-user', (req, res) =>{
+//   User.find((err, result) => {
+//       if(!err) {
+//           return res.json(result);
+//       } else {
+//           return res.status(500).send('get all user faild.');
+//       }
+//   });
+// });
+
+// app.listen(8888, () => console.log('Listening on port 8888'));
