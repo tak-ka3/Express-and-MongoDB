@@ -46,7 +46,7 @@ exports.update_task = (req, res) => {
 
 // 特定のタスクを削除する。
 exports.delete_task = (req, res) => {
-  Task.remove(
+  Task.deleteMany(
     {
       _id: req.params.taskId
     },

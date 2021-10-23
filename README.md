@@ -56,6 +56,9 @@ npm install nodemon --save-dev
 - "type"はcommonjsだとimportを標準として、moduleだとrequireを標準としている。
 - 上に関して補足で、例外的に`npm start`, `npm test`, `npm restart`, `npm stop`は`npm run xxx`と同じ意味。つまり`run`をつける必要がないもの。
 
+### MongoDB
+- [Collection Methods](https://docs.mongodb.com/v3.2/reference/method/js-collection/)
+
 ### エラー
 - `[nodemon] app crashed - waiting for file changes before starting...`というエラーが出たが、この前に`MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017`というエラーが出ていて、原因は、index.jsのconnectするURLを"mongodb://mongo:27017/Tododb"ではなく、"localhost://mongo:27017/Tododb"にしてしまっていたところにあった。
 - `nodeman`使っているのに変更がすぐに反映されない。

@@ -2,7 +2,7 @@ let express = require("express")
 let app = express()
 let port = process.env.PORT || 8888
 let mongoose = require("mongoose")
-// let Task = require("./api/models/taskModel") // 作成したModelの読み込み
+let Task = require("./api/models/taskModel") // 作成したModelの読み込み
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://mongo:27017/Tododb")
