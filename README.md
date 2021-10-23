@@ -6,6 +6,18 @@ docker-compose build
 docker-compose up -d api
 ```
 
+### Configure API call
+```bash
+# GET
+$ curl localhost:8888/tasks
+# POST
+$ curl -X POST -H "Content-Type: application/json" -d '{"name": "test3"}' localhost:8888/tasks 
+# PUT
+$ curl -X PUT -H "Content-Type: application/json" -d '{"name": "test updated"}' localhost:8888/tasks/61739267ba4b5cfc48dc395a
+# DELETE
+$ curl -X DELETE -H "Content-Type: application/json" localhost:8888/tasks/61739267ba4b5cfc48dc395a
+```
+
 ### 初期設定
 ```bash
 npm init

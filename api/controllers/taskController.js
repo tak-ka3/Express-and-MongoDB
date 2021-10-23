@@ -25,7 +25,7 @@ exports.create_task = (req, res) => {
 
 // 特定のタスクを取得する。
 exports.load_task = function(req, res) {
-  Task.findById(req.params.taskId, function(err, task) {
+  Task.findById(req.params.taskId,(err, task) => {
     if (err) res.send(err);
     res.json(task);
   });
@@ -37,7 +37,7 @@ exports.update_task = function(req, res) {
     { _id: req.params.taskId },
     req.body,
     { new: true },
-    function(err, task) {
+    (err, task) => {
       if (err) res.send(err);
       res.json(task);
     }
