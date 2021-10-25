@@ -5,6 +5,11 @@
 docker-compose build
 docker-compose up -d api
 ```
+### How to clean up
+```bash
+docker-compose stop
+docker-compose down
+```
 
 ### Configure API call
 ```bash
